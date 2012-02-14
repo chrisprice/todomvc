@@ -1,0 +1,49 @@
+body {
+
+}
+
+.vertical-space li {
+	margin: 5px 0;
+}
+
+.row {
+	margin-top: 20px;
+}
+
+.hero-unit {
+	text-align: center;
+	padding: 40px 550px 40px 40px;
+	background: #F5F5F5 url('../screenshot.png') no-repeat top right;
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
+}
+
+.hero-unit h1 {
+	font-size: 80px;
+	margin-bottom: 10px;
+}
+
+.hero-unit p {
+	font-size: 24px;
+	line-height: 32px;
+}
+
+.hero-unit .btn-large {
+	font-size: 20px;
+	font-weight: normal;
+	padding: 14px 24px;
+	margin: 0 5px;
+}
+
+.hero-unit nav {
+	margin-top: 30px;
+	margin-bottom: 10px;
+}
+
+#demos ul {
+	-webkit-column-count: 2;
+}
+
+#demos ul li {
+	float: none;
+}
