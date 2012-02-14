@@ -1,5 +1,14 @@
-body {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-weight: 500;
+}
 
+h2 {
+	margin-bottom: 10px;
 }
 
 .vertical-space li {
@@ -41,7 +50,7 @@ body {
 }
 
 #demos ul {
-	-webkit-column-count: 2;
+	float: left;
 }
 
 #demos ul li {
