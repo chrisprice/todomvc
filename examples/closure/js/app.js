@@ -110,8 +110,8 @@ var currentRoute = todomvc.Route.ALL;
 /**
  * @type {!goog.History}
  */
-var history = new goog.History();
-goog.events.listen(history, goog.history.EventType.NAVIGATE,
+var historyObj = new goog.History();
+goog.events.listen(historyObj, goog.history.EventType.NAVIGATE,
         function(e) {
     // constrain the route to be one of the enum values
     switch (e.token) {
@@ -124,7 +124,7 @@ goog.events.listen(history, goog.history.EventType.NAVIGATE,
         }
         break;
     default:
-        history.replaceToken(todomvc.Route.ALL);
+        historyObj.replaceToken(todomvc.Route.ALL);
         break;
     }
 });
@@ -242,4 +242,4 @@ goog.events.listen(newToDo, goog.events.EventType.KEYUP, function(e) {
 });
 
 itemStore.load();
-history.setEnabled(true);
+historyObj.setEnabled(true);
