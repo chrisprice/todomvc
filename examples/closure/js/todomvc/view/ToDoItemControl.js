@@ -85,7 +85,8 @@ todomvc.view.ToDoItemControl.prototype.enterDocument = function() {
  * component.
  */
 todomvc.view.ToDoItemControl.prototype.getRenderer = function() {
-    return (/**@type {todomvc.view.ToDoItemControlRenderer}*/ this.renderer_);
+    return /**@type {todomvc.view.ToDoItemControlRenderer}*/ (
+        this.getRenderer());
 };
 
 /**

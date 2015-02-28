@@ -29,8 +29,7 @@ goog.require('todomvc.view.ToDoListContainer');
  * @type {todomvc.model.ToDoItemStore}
  */
 var itemStore = new todomvc.model.ToDoItemStore();
-itemStore.addEventListener(todomvc.model.ToDoItemStore.ChangeEventType,
-    redraw);
+itemStore.listen(todomvc.model.ToDoItemStore.ChangeEventType, redraw);
 
 /**
  * @type {todomvc.view.ToDoListContainer}
@@ -163,14 +162,13 @@ function redraw() {
     itemCountControl.setContent(remainingCount.toString());
     clearCompletedControl.setContent(doneCount.toString());
     clearCompletedControl.setVisible(doneCount > 0);
-    goog.style.showElement(main, items.length > 0);
-    goog.style.showElement(footer, items.length > 0);
+    goog.style.setElementShown(main, items.length > 0);
+    goog.style.setElementShown(footer, items.length > 0);
 
     /**
-     * @type {Array.<Element>}
+     * @type {NodeList}
      */
-    var routeLinks = /** @type {Array.<Element>} */
-        (goog.dom.query('#filters a'));
+    var routeLinks = document.querySelectorAll('#filters a');
     goog.array.forEach(routeLinks, function(link, i) {
         if ((currentRoute === todomvc.Route.ALL && i === 0) ||
                 (currentRoute === todomvc.Route.ACTIVE && i === 1) ||
@@ -199,8 +197,8 @@ goog.events.listen(container,
      * @type {!todomvc.model.ToDoItem}
      */
     var updatedModel = new todomvc.model.ToDoItem(
-            (/**@type {!string} */ control.getContent()),
-            (/**@type {!boolean} */ control.isChecked()),
+            /**@type {!string} */ (control.getContent()),
+            /**@type {!boolean} */ (control.isChecked()),
             originalModel.getId());
 
     itemStore.addOrUpdate(updatedModel);
@@ -216,7 +214,7 @@ goog.events.listen(container,
     /**
      * @type {todomvc.model.ToDoItem}
      */
-    var model = (/**@type {todomvc.model.ToDoItem} */ control.getModel());
+    var model = /**@type {todomvc.model.ToDoItem} */ (control.getModel());
     if (model !== null) {
         itemStore.remove(model);
     }
